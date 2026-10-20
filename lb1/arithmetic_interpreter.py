@@ -52,7 +52,7 @@ def parser_sum_sub(tokens, pos):
     left, pos, err = parser_mul_dev(tokens, pos)
     if err != '':
         return 0, pos, err
-    while tokens[pos] in ('+', '-'):
+    while tokens[pos] in '+-':
         op = tokens[pos]
         pos += 1
         right, pos, err = parser_mul_dev(tokens, pos)
@@ -69,7 +69,7 @@ def parser_mul_dev(tokens, pos):
     left, pos, err = parser_plus_minus(tokens, pos)
     if err != '':
         return 0, pos, err
-    while tokens[pos] in ('*', '/'):
+    while tokens[pos] in '*/':
         op = tokens[pos]
         pos += 1
         right, pos, err = parser_plus_minus(tokens, pos)
